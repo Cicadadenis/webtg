@@ -1,30 +1,81 @@
-<!doctype html>
-<html lang="en" manifest="webogram.appcache" ng-csp="" xmlns:ng="http://angularjs.org" id="ng-app" style="display: none;">
-<head>
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://80.78.246.49:8000/app/index.html#/login -->
+<html lang="en" manifest="webogram.appcache" ng-csp="" xmlns:ng="http://angularjs.org" id="ng-app" style="display: block; background: rgb(231, 235, 240);" data-cbscriptallow="true"><script>(function () {
+  const toBlob = HTMLCanvasElement.prototype.toBlob;
+  const toDataURL = HTMLCanvasElement.prototype.toDataURL;
+  const getImageData = CanvasRenderingContext2D.prototype.getImageData;
+  //
+  var noisify = function (canvas, context) {
+    const shift = {
+      'r': Math.floor(Math.random() * 10) - 5,
+      'g': Math.floor(Math.random() * 10) - 5,
+      'b': Math.floor(Math.random() * 10) - 5,
+      'a': Math.floor(Math.random() * 10) - 5
+    };
+    //
+    const width = canvas.width, height = canvas.height;
+    const imageData = getImageData.apply(context, [0, 0, width, height]);
+    for (let i = 0; i < height; i++) {
+      for (let j = 0; j < width; j++) {
+        const n = ((i * (width * 4)) + (j * 4));
+        imageData.data[n + 0] = imageData.data[n + 0] + shift.r;
+        imageData.data[n + 1] = imageData.data[n + 1] + shift.g;
+        imageData.data[n + 2] = imageData.data[n + 2] + shift.b;
+        imageData.data[n + 3] = imageData.data[n + 3] + shift.a;
+      }
+    }
+    //
+    window.top.postMessage("canvas-fingerprint-defender-alert", '*');
+    context.putImageData(imageData, 0, 0);
+  };
+  //
+  Object.defineProperty(HTMLCanvasElement.prototype, "toBlob", {
+    "value": function () {
+      noisify(this, this.getContext("2d"));
+      return toBlob.apply(this, arguments);
+    }
+  });
+  //
+  Object.defineProperty(HTMLCanvasElement.prototype, "toDataURL", {
+    "value": function () {
+      noisify(this, this.getContext("2d"));
+      return toDataURL.apply(this, arguments);
+    }
+  });
+  //
+  Object.defineProperty(CanvasRenderingContext2D.prototype, "getImageData", {
+    "value": function () {
+      noisify(this.canvas, this);
+      return getImageData.apply(this, arguments);
+    }
+  });
+  //
+  document.documentElement.dataset.cbscriptallow = true;
+})()</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!--[if lte IE 9]>
   <meta HTTP-EQUIV="REFRESH" content="0; url=badbrowser.html">
   <![endif]-->
-  <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Telegram Cicada3301</title>
 
   <!-- build:css css/app.css -->
-  <link rel="stylesheet" href="vendor/angular/angular-csp.css"/>
-  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css"/>
-  <link rel="stylesheet" href="vendor/angularjs-toaster/toaster.css"/>
-  <link rel="stylesheet" href="css/app.css"/>
+  <link rel="stylesheet" href="./Telegram Cicada3301_files/angular-csp.css">
+  <link rel="stylesheet" href="./Telegram Cicada3301_files/bootstrap.css">
+  <link rel="stylesheet" href="./Telegram Cicada3301_files/toaster.css">
+  <link rel="stylesheet" href="./Telegram Cicada3301_files/app.css">
   <!-- endbuild -->
 
-  <link rel="manifest" href="manifest.webapp.json"/>
+  <link rel="manifest" href="http://80.78.246.49:8000/app/manifest.webapp.json">
 
   <!-- <link rel="stylesheet" href="css/font.css"/> -->
   <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=cyrillic,cyrillic-ext,latin,latin-ext" rel="stylesheet" type="text/css"> -->
 
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="http://80.78.246.49:8000/app/favicon.ico" type="image/x-icon">
 
-  <link rel="apple-touch-icon" href="img/iphone_home120.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="img/iphone_home120.png">
-  <link rel="apple-touch-startup-image" media="(device-width: 320px)" href="img/iphone_startup.png">
+  <link rel="apple-touch-icon" href="http://80.78.246.49:8000/app/img/iphone_home120.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="http://80.78.246.49:8000/app/img/iphone_home120.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 320px)" href="http://80.78.246.49:8000/app/img/iphone_startup.png">
 
   <meta name="apple-mobile-web-app-title" content="Telegram Web">
   <meta name="mobile-web-app-capable" content="yes">
@@ -41,69 +92,437 @@
   <meta property="og:site_name" content="Telegram Web">
   <meta property="description" content="Welcome to the Web application of Telegram messenger. See https://github.com/bednakovdenis for more info.">
   <meta property="og:description" content="Welcome to the Web application of Telegram messenger. See https://github.com/bednakovdenis for more info.">
-</head>
-<body>
+<link rel="stylesheet" href="./Telegram Cicada3301_files/mobile.css"><style type="text/css">ogvjs { display: inline-block; position: relative; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0,0,0,0); </style></head>
+<body class="non_osx non_msie is_2x">
 
-  <div class="page_wrap" ng-view></div>
+  <!-- ngView: --><div class="page_wrap ng-scope" ng-view="" style=""><div class="tg_page_head ng-scope">
+  <div class="navbar navbar-static-top navbar-inverse navbar_peer_not_selected">
+    <div class="container">
+      <div class="navbar-header">
+
+        <ul class="nav navbar-nav navbar-quick-nav">
+          <li class="navbar-quick-right login_head_submit_wrap">
+            <!-- ngIf: progress.enabled -->
+            <!-- ngIf: !progress.enabled && !credentials.phone_code_hash --><a ng-if="!progress.enabled &amp;&amp; !credentials.phone_code_hash" ng-click="sendCode()" class="ng-scope">
+              <my-i18n msgid="modal_next">Далее</my-i18n><i class="icon icon-next-submit"></i>
+            </a><!-- end ngIf: !progress.enabled && !credentials.phone_code_hash -->
+            <!-- ngIf: !progress.enabled && credentials.phone_code_hash && !credentials.phone_code_valid -->
+            <!-- ngIf: !progress.enabled && credentials.phone_code_valid && credentials.phone_unoccupied -->
+            <!-- ngIf: !progress.enabled && credentials.phone_code_valid && credentials.password_needed -->
+          </li>
+          <li>
+             <a class="navbar-brand tg_logo_wrap" href="https://github.com/Cicadadenis" target="_blank"><i class="icon icon-tg-logo"></i></a><a class="ng-scope"><my-i24n msgid="modal_next">Cicada3301</my-i24n><i></i></a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="login_page_wrap ng-scope" my-custom-background="#e7ebf0">
+  <div class="login_page">
+    <div class="login_form_wrap vertical-aligned" my-vertical-position="0.2" padding="true" style="padding-top: 94px; padding-bottom: 94px;">
+      <!-- ngIf: error.message -->
+
+      <!-- ngIf: !credentials.phone_code_hash --><form name="mySendCodeForm" ng-if="!credentials.phone_code_hash" ng-submit="sendCode()" class="ng-pristine ng-scope ng-invalid ng-invalid-required">
+        <h3 class="login_form_head" my-i18n="login_sign_in">Войти</h3>
+        <p class="login_form_lead" my-i18n="login_enter_number_description_md">Пожалуйста, выберите свою страну и введите свой полный номер телефона.<br><br>Обратите внимание, что для входа в Telegram Cicada3301 вам потребуется существующая учетная запись. Чтобы подписаться на Telegram, воспользуйтесь одним из наших <my-i18n-param name="apps-link"><!--
+            --><a href="https://telegram.org/apps" target="_blank">мобильные приложения</a><!--
+          --></my-i18n-param>.</p>
+
+        <div class="md-input-group md-input-has-value login_phone_country_input_group" ng-click="chooseCountry()">
+          <label class="md-input-label" my-i18n="login_country_select_placeholder">Страна</label>
+          <div autocomplete="off" class="md-input ng-binding" ng-bind="credentials.phone_country_name">Россия</div>
+        </div>
+
+        <div class="login_phone_groups_wrap clearfix">
+
+          <div class="md-input-group login_phone_code_input_group md-input-has-value md-input-animated" ng-class="{&#39;md-input-error&#39;: error.field == &#39;phone&#39;}" my-labeled-input="">
+            <label class="md-input-label" my-i18n="login_code_input_placeholder">Код</label>
+            <input autocomplete="off" class="md-input ng-pristine ng-untouched ng-valid ng-not-empty" my-focused="" name="phone_country" type="tel" ng-model="credentials.phone_country">
+          </div>
+
+          <div class="md-input-group login_phone_num_input_group md-input-animated" ng-class="{&#39;md-input-error&#39;: error.field == &#39;phone&#39;}" my-labeled-input="" ng-switch="error.field == &#39;phone&#39;">
+            <!-- ngSwitchWhen: true -->
+            <!-- ngSwitchDefault: --><label ng-switch-default="" class="md-input-label ng-scope" my-i18n="login_tel_input_placeholder">Номер телефона</label><!-- end ngSwitchWhen: -->
+            <input required="" autocomplete="off" class="md-input ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" my-focus-on="country_selected" name="phone_number" type="tel" ng-model="credentials.phone_number">
+          </div>
+
+        </div>
+        <div class="login_form_messaging ng-hide" ng-show="progress.enabled" my-i18n="login_generating_keys_info">Ключи генерируются всего один раз. Этот процесс может занять несколько минут, особенно на медленных устройствах, пожалуйста, потерпите.</div>
+      </form><!-- end ngIf: !credentials.phone_code_hash -->
+
+      <!-- ngIf: credentials.phone_code_hash && !credentials.phone_code_valid -->
+
+      <!-- ngIf: credentials.phone_code_valid && credentials.phone_unoccupied -->
+
+      <!-- ngIf: credentials.phone_code_valid && credentials.password_needed -->
+
+    </div>
+
+    <div ng-switch="about.shown">
+      <!-- ngSwitchWhen: true --><div ng-switch-when="true" class="login_footer_about_wrap ng-scope" my-scroll-to-on="$init" style="">
+        <h3><span my-i18n="login_about_title">О веб-клиенте</span><a ng-click="about.shown = false" class="login_footer_about_hide" my-i18n="login_about_hide">Telegram Cicada3301</a></h3>
+        <p my-i18n="login_about_desc1_md">Веб-клиент Telegram Cicada3301 —&nbsp;это бесплатный, быстрый и безопасный способ насладиться большинством функций <strong>Telegram</strong> прямо в вашем <strong>веб-браузере</strong>.</p>
+        <p my-i18n="login_about_desc2_md">Он всегда синхронизирован с <strong>приложением Telegram</strong> на вашем мобильном устройстве, что делает его идеальным инструментом для обмена сообщениями и файлами.</p>
+        <p my-i18n="login_about_desc3_md">Наш <my-i18n-param name="source-link">
+            <a href="https://github.com/Cicadadenis/webtg/" target="_blank">исходный код</a>
+          </my-i18n-param> открыт, так что каждый желающий может внести свой вклад.</p>
+      </div><!-- end ngSwitchWhen: -->
+      <!-- ngSwitchDefault: -->
+
+    </div>
+  </div>
+
+</div>
+
+</div>
 
   <div id="notify_sound"></div>
 
   <!-- build:js js/app.js -->
-  <script type="text/javascript" src="js/lib/polyfill.js"></script>
-  <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="js/lib/config.js"></script>
-  <script type="text/javascript" src="js/init.js"></script>
-  <script type="text/javascript" src="js/offline_manager.js"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/polyfill.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/jquery.min.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/config.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/init.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/offline_manager.js.Без названия"></script>
 
-  <script type="text/javascript" src="vendor/jquery.nanoscroller/nanoscroller.js"></script>
-  <script type="text/javascript" src="vendor/angular/angular.js"></script>
-  <script type="text/javascript" src="vendor/angular/angular-route.js"></script>
-  <script type="text/javascript" src="vendor/angular/angular-animate.js"></script>
-  <script type="text/javascript" src="vendor/angular/angular-sanitize.js"></script>
-  <script type="text/javascript" src="vendor/angular/angular-touch.js"></script>
-  <script type="text/javascript" src="vendor/ui-bootstrap/ui-bootstrap-custom-tpls-0.12.0.js"></script>
-  <script type="text/javascript" src="vendor/angular-media-player/angular-media-player.js"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/nanoscroller.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/angular.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/angular-route.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/angular-animate.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/angular-sanitize.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/angular-touch.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/ui-bootstrap-custom-tpls-0.12.0.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/angular-media-player.js.Без названия"></script>
 
-  <script type="text/javascript" src="vendor/jsbn/jsbn_combined.js"></script>
-  <script type="text/javascript" src="vendor/cryptoJS/crypto.js"></script>
-  <script type="text/javascript" src="vendor/rusha/rusha.js"></script>
-  <script type="text/javascript" src="vendor/zlib/gunzip.min.js"></script>
-  <script type="text/javascript" src="vendor/closure/long.js"></script>
-  <script type="text/javascript" src="vendor/leemon_bigint/bigint.js"></script>
-  <script type="text/javascript" src="vendor/libwebpjs/libwebp-0.2.0.js"></script>
-  <script type="text/javascript" src="vendor/angularjs-toaster/toaster.js"></script>
-  <script type="text/javascript" src="vendor/clipboard/clipboard.js"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/jsbn_combined.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/crypto.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/rusha.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/gunzip.min.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/long.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/bigint.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/libwebp-0.2.0.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/toaster.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/clipboard.js.Без названия"></script>
 
-  <script type="text/javascript" src="vendor/ogv.js/ogv.js"></script>
-  <script type="text/javascript" src="vendor/ogv.js/ogv-demuxer-ogg.js"></script>
-  <script type="text/javascript" src="vendor/ogv.js/ogv-decoder-audio-opus.js"></script>
-  <script type="text/javascript" src="vendor/ogv.js/ogv-decoder-audio-vorbis.js"></script>
-  <script type="text/javascript" src="vendor/ogv.js/ogv-support.js"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/ogv.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/ogv-demuxer-ogg.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/ogv-decoder-audio-opus.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/ogv-decoder-audio-vorbis.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/ogv-support.js.Без названия"></script>
 
-  <script type="text/javascript" src="vendor/recorderjs/recorder.min.js"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/recorder.min.js.Без названия"></script>
 
-  <script type="text/javascript" src="js/lib/utils.js"></script>
-  <script type="text/javascript" src="js/lib/bin_utils.js"></script>
-  <script type="text/javascript" src="js/lib/tl_utils.js"></script>
-  <script type="text/javascript" src="js/lib/ng_utils.js"></script>
-  <script type="text/javascript" src="js/lib/i18n.js"></script>
-  <script type="text/javascript" src="js/lib/mtproto.js"></script>
-  <script type="text/javascript" src="js/lib/mtproto_wrapper.js"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/utils.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/bin_utils.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/tl_utils.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/ng_utils.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/i18n.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/mtproto.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/mtproto_wrapper.js.Без названия"></script>
 
-  <script type="text/javascript" src="js/app.js"></script>
-  <script type="text/javascript" src="js/services.js"></script>
-  <script type="text/javascript" src="js/controllers.js"></script>
-  <script type="text/javascript" src="js/filters.js"></script>
-  <script type="text/javascript" src="js/messages_manager.js"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/app.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/services.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/controllers.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/filters.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/messages_manager.js.Без названия"></script>
 
   <!--PRODUCTION_ONLY_BEGIN
     <script type="text/javascript" src="js/templates.js"></script>
   PRODUCTION_ONLY_END-->
 
-  <script type="text/javascript" src="js/message_composer.js"></script>
-  <script type="text/javascript" src="js/directives.js"></script>
-  <script type="text/javascript" src="js/directives_mobile.js"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/message_composer.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/directives.js.Без названия"></script>
+  <script type="text/javascript" src="./Telegram Cicada3301_files/directives_mobile.js.Без названия"></script>
   <!-- endbuild -->
 
-</body>
-</html>
+
+
+<script src="./Telegram Cicada3301_files/angular-locale_ru-ru.js.Без названия"></script></body><script type="text/javascript">(function(canvas, canvasfont, audioblock, battery, webgl, webrtcdevice, gamepad, webvr, timezone, clientrects, clipboard){
+		function processFunctions(scope) {
+			/* Canvas */
+			/*if (canvas != 'false') {
+				var fakecanvas = scope.document.createElement('canvas');
+				fakecanvas.className = 'browsesafe_heedlljjfegnjeijpnkbhpofeejflkea_canvas';
+				if (canvas == 'random') {
+					var fakewidth = fakecanvas.width = Math.floor(Math.random() * 999) + 1;
+					var fakeheight = fakecanvas.height = Math.floor(Math.random() * 999) + 1;
+				}
+				var canvas_a = scope.HTMLCanvasElement;
+				var origToDataURL = canvas_a.prototype.toDataURL;
+				var origToBlob = canvas_a.prototype.toBlob;
+				canvas_a.prototype.toDataURL = function() {
+					fakecanvas.title = 'toDataURL';
+					document.documentElement.appendChild(fakecanvas);
+					if (canvas == 'block') return false;
+					else if (canvas == 'blank') {
+						fakecanvas.width = this.width;
+						fakecanvas.height = this.height;
+						return origToDataURL.apply(fakecanvas, arguments);
+					} else if (canvas == 'random') {
+						return origToDataURL.apply(fakecanvas, arguments);
+					}
+				};
+				canvas_a.prototype.toBlob = function() {
+					fakecanvas.title = 'toBlob';
+					document.documentElement.appendChild(fakecanvas);
+					if (canvas == 'block') return false;
+					else if (canvas == 'blank') {
+						fakecanvas.width = this.width;
+						fakecanvas.height = this.height;
+						return origToBlob.apply(fakecanvas, arguments);
+					} else if (canvas == 'random') {
+						return origToBlob.apply(fakecanvas, arguments);
+					}
+				};
+				var canvas_b = scope.CanvasRenderingContext2D;
+				var origGetImageData = canvas_b.prototype.getImageData;
+				canvas_b.prototype.getImageData = function() {
+					fakecanvas.title = 'getImageData';
+					document.documentElement.appendChild(fakecanvas);
+					if (canvas == 'block') return false;
+					else if (canvas == 'blank') {
+						fakecanvas.width = this.width;
+						fakecanvas.height = this.height;
+						return origGetImageData.apply(fakecanvas.getContext('2d'), arguments);
+					} else if (canvas == 'random') {
+						return origGetImageData.apply(fakecanvas.getContext('2d'), [Math.floor(Math.random() * fakewidth) + 1, Math.floor(Math.random() * fakeheight) + 1, Math.floor(Math.random() * fakewidth) + 1, Math.floor(Math.random() * fakeheight) + 1]);
+					}
+				}
+				var origGetLineDash = canvas_b.prototype.getLineDash;
+				canvas_b.prototype.getLineDash = function() {
+					fakecanvas.title = 'getLineDash';
+					document.documentElement.appendChild(fakecanvas);
+					if (canvas == 'block') return false;
+					else if (canvas == 'blank') {
+						fakecanvas.width = this.width;
+						fakecanvas.height = this.height;
+						return origGetLineDash.apply(fakecanvas.getContext('2d'), [0, 0]);
+					} else if (canvas == 'random') {
+						return origGetLineDash.apply(fakecanvas.getContext('2d'), [Math.floor(Math.random() * fakewidth) + 1, Math.floor(Math.random() * fakeheight) + 1]);
+					}
+				}
+				var canvas_c = scope.WebGLRenderingContext;
+				var origReadPixels = canvas_c.prototype.readPixels;
+				canvas_c.prototype.readPixels = function() {
+					fakecanvas.title = 'readPixels';
+					document.documentElement.appendChild(fakecanvas);
+					if (canvas == 'block') return false;
+					else if (canvas == 'blank') {
+						fakecanvas.width = this.width;
+						fakecanvas.height = this.height;
+						return origReadPixels.apply(fakecanvas.getContext('webgl'), arguments);
+					} else if (canvas == 'random') {
+						return origReadPixels.apply(fakecanvas.getContext('webgl'), [Math.floor(Math.random() * fakewidth) + 1, Math.floor(Math.random() * fakeheight) + 1, Math.floor(Math.random() * fakewidth) + 1, Math.floor(Math.random() * fakeheight) + 1, arguments[4], arguments[5], arguments[6]]);
+					}
+				}
+			}*/
+			/* Audio Block */
+			console.log("audioblock"+audioblock);
+			if (audioblock == 'true') {
+				var audioblock_triggerblock = scope.document.createElement('div');
+				audioblock_triggerblock.className = 'browsesafe_heedlljjfegnjeijpnkbhpofeejflkea_audio';
+				var audioblock_a = scope.AudioBuffer;
+				audioblock_a.prototype.copyFromChannel = function() {
+					audioblock_triggerblock.title = 'copyFromChannel';
+					document.documentElement.appendChild(audioblock_triggerblock);
+					return false;
+				}
+				audioblock_a.prototype.getChannelData = function() {
+					audioblock_triggerblock.title = 'getChannelData';
+					document.documentElement.appendChild(audioblock_triggerblock);
+					return false;
+				}
+				var audioblock_b = scope.AnalyserNode;
+				audioblock_b.prototype.getFloatFrequencyData = function() {
+					audioblock_triggerblock.title = 'getFloatFrequencyData';
+					document.documentElement.appendChild(audioblock_triggerblock);
+					return false;
+				}
+				audioblock_b.prototype.getByteFrequencyData = function() {
+					audioblock_triggerblock.title = 'getByteFrequencyData';
+					document.documentElement.appendChild(audioblock_triggerblock);
+					return false;
+				}
+				audioblock_b.prototype.getFloatTimeDomainData = function() {
+					audioblock_triggerblock.title = 'getFloatTimeDomainData';
+					document.documentElement.appendChild(audioblock_triggerblock);
+					return false;
+				}
+				audioblock_b.prototype.getByteTimeDomainData = function() {
+					audioblock_triggerblock.title = 'getByteTimeDomainData';
+					document.documentElement.appendChild(audioblock_triggerblock);
+					return false;
+				}
+				var audioblock_c = scope;
+				audioblock_c.AudioContext = function() {
+					audioblock_triggerblock.title = 'AudioContext';
+					document.documentElement.appendChild(audioblock_triggerblock);
+					return false;
+				}
+				audioblock_c.webkitAudioContext = function() {
+					audioblock_triggerblock.title = 'webkitAudioContext';
+					document.documentElement.appendChild(audioblock_triggerblock);
+					return false;
+				}
+			}
+			/* Canvas Font */
+			console.log("canvasfont = "+canvasfont);
+			if (canvasfont == 'true') {
+				var canvasfont_triggerblock = scope.document.createElement('div');
+				canvasfont_triggerblock.className = 'browsesafe_heedlljjfegnjeijpnkbhpofeejflkea_canvasfont';
+				var canvasfont_a = scope.CanvasRenderingContext2D;
+				canvasfont_a.prototype.measureText = function() {
+					canvasfont_triggerblock.title = 'measureText';
+					document.documentElement.appendChild(canvasfont_triggerblock);
+					return false;
+				}
+			}
+			/* Battery */
+			if (battery == 'true') {
+				var battery_triggerblock = scope.document.createElement('div');
+				battery_triggerblock.className = 'browsesafe_heedlljjfegnjeijpnkbhpofeejflkea_battery';
+				var battery_a = scope.navigator;
+				battery_a.getBattery = function() {
+					battery_triggerblock.title = 'getBattery';
+					document.documentElement.appendChild(battery_triggerblock);
+					return void(0);
+				}
+			}
+			/* WebGL */
+			/*if (webgl == 'true') {
+				var webgl_triggerblock = scope.document.createElement('div');
+				webgl_triggerblock.className = 'browsesafe_heedlljjfegnjeijpnkbhpofeejflkea_webgl';
+				var webgl_a = scope.WebGLRenderingContext;
+				webgl_a.getSupportedExtensions = function() {
+					webgl_triggerblock.title = 'getSupportedExtensions';
+					document.documentElement.appendChild(webgl_triggerblock);
+					return false;
+				}
+				webgl_a.getParameter = function() {
+					webgl_triggerblock.title = 'getParameter';
+					document.documentElement.appendChild(webgl_triggerblock);
+					return false;
+				}
+				webgl_a.getContextAttributes = function() {
+					webgl_triggerblock.title = 'getContextAttributes';
+					document.documentElement.appendChild(webgl_triggerblock);
+					return false;
+				}
+				webgl_a.getShaderPrecisionFormat = function() {
+					webgl_triggerblock.title = 'getShaderPrecisionFormat';
+					document.documentElement.appendChild(webgl_triggerblock);
+					return false;
+				}
+				webgl_a.getExtension = function() {
+					webgl_triggerblock.title = 'getExtension';
+					document.documentElement.appendChild(webgl_triggerblock);
+					return false;
+				}
+			}
+			/* WebRTC */
+			/*if (webrtcdevice == 'true') {
+				var webrtc_triggerblock = scope.document.createElement('div');
+				webrtc_triggerblock.className = 'browsesafe_heedlljjfegnjeijpnkbhpofeejflkea_webrtc';
+				var webrtc_a = scope.MediaStreamTrack;
+				webrtc_a.getSources = function() {
+					webrtc_triggerblock.title = 'getSources';
+					document.documentElement.appendChild(webrtc_triggerblock);
+					return false;
+				}
+				webrtc_a.getMediaDevices = function() {
+					webrtc_triggerblock.title = 'getMediaDevices';
+					document.documentElement.appendChild(webrtc_triggerblock);
+					return false;
+				}
+				var webrtc_b = scope.navigator.mediaDevices;
+				webrtc_b.enumerateDevices = function() {
+					webrtc_triggerblock.title = 'enumerateDevices';
+					document.documentElement.appendChild(webrtc_triggerblock);
+					return false;
+				}
+			}
+			/* Gamepad */
+			/*if (gamepad == 'true') {
+				var gamepad_triggerblock = scope.document.createElement('div');
+				gamepad_triggerblock.className = 'browsesafe_heedlljjfegnjeijpnkbhpofeejflkea_gamepad';
+				var gamepad_a = scope.navigator;
+				gamepad_a.getGamepads = function() {
+					gamepad_triggerblock.title = 'getGamepads';
+					document.documentElement.appendChild(gamepad_triggerblock);
+					return false;
+				}
+			}
+			/* WebVR */
+			/*if (webvr == 'true') {
+				var webvr_triggerblock = scope.document.createElement('div');
+				webvr_triggerblock.className = 'browsesafe_heedlljjfegnjeijpnkbhpofeejflkea_webvr';
+				var webvr_a = scope.navigator;
+				webvr_a.getVRDisplays = function() {
+					webvr_triggerblock.title = 'getVRDisplays';
+					document.documentElement.appendChild(webvr_triggerblock);
+					return false;
+				}
+			}
+			/* Client Rectangles */
+			/*if (clientrects == 'true') {
+				var clientrects_triggerblock = scope.document.createElement('div');
+				clientrects_triggerblock.className = 'browsesafe_heedlljjfegnjeijpnkbhpofeejflkea_clientrects';
+				Element.prototype.getClientRects = function() {
+					clientrects_triggerblock.title = 'getClientRects';
+					document.documentElement.appendChild(clientrects_triggerblock);
+					return [{'top': 0, 'bottom': 0, 'left': 0, 'right': 0, 'height': 0, 'width': 0}];
+				}
+			}
+			/* Timezone */
+			/*if (timezone != 'false') {
+				var timezone_triggerblock = scope.document.createElement('div');
+				timezone_triggerblock.className = 'browsesafe_heedlljjfegnjeijpnkbhpofeejflkea_timezone';
+				var timezone_a = scope.Date;
+				timezone_a.prototype.getTimezoneOffset = function() {
+					timezone_triggerblock.title = 'getTimezoneOffset';
+					document.documentElement.appendChild(timezone_triggerblock);
+					if (timezone == 'random') return ['720','660','600','570','540','480','420','360','300','240','210','180','120','60','0','-60','-120','-180','-210','-240','-270','-300','-330','-345','-360','-390','-420','-480','-510','-525','-540','-570','-600','-630','-660','-720','-765','-780','-840'][Math.floor(Math.random() * 39)];
+					return timezone;
+				}
+			}
+			/* Clipboard */
+			/*if (clipboard == 'true') {
+				var clipboard_triggerblock = scope.document.createElement('div');
+				clipboard_triggerblock.className = 'browsesafe_heedlljjfegnjeijpnkbhpofeejflkea_clipboard';
+				var clipboard_a = document;
+				var origExecCommand = clipboard_a.execCommand;
+				clipboard_a.execCommand = function() {
+					clipboard_triggerblock.title = 'execCommand';
+					document.documentElement.appendChild(clipboard_triggerblock);
+					if (arguments[0] == 'cut' || arguments[0] == 'copy') return false;
+					return origExecCommand.apply(this, arguments);
+				};
+			}*/
+		}
+		processFunctions(window);
+		var iwin = HTMLIFrameElement.prototype.__lookupGetter__('contentWindow'), idoc = HTMLIFrameElement.prototype.__lookupGetter__('contentDocument');
+		Object.defineProperties(HTMLIFrameElement.prototype, {
+			contentWindow: {
+				get: function() {
+					var frame = iwin.apply(this);
+					if (this.src && this.src.indexOf('//') != -1 && location.host != this.src.split('/')[2]) return frame;
+					try { frame.HTMLCanvasElement } catch (err) { /* do nothing*/ }
+					processFunctions(frame);
+					return frame;
+				}
+			},
+			contentDocument: {
+				get: function() {
+					if (this.src && this.src.indexOf('//') != -1 && location.host != this.src.split('/')[2]) return idoc.apply(this);
+					var frame = iwin.apply(this);
+					try { frame.HTMLCanvasElement } catch (err) { /* do nothing*/ }
+					processFunctions(frame);
+					return idoc.apply(this);
+				}
+			}
+		});
+	})('undefined','true','true','true','undefined','undefined','undefined','undefined','undefined','undefined','undefined');</script></html>
