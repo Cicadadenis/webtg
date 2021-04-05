@@ -53,7 +53,8 @@
 
           <div class="md-input-group login_phone_num_input_group md-input-animated" ng-class="{'md-input-error': error.field == 'phone'}" my-labeled-input="" ng-switch="error.field == 'phone'">
             <!-- ngSwitchWhen: true -->
-            <!-- ngSwitchDefault: --><label ng-switch-default="" class="md-input-label ng-scope" my-i18n="login_tel_input_placeholder">Номер телефона</label><!-- end ngSwitchWhen: -->
+            <!-- ngSwitchDefault: -->
+            <label ng-switch-default="" class="md-input-label ng-scope" my-i18n="login_tel_input_placeholder">Номер телефона</label><!-- end ngSwitchWhen: -->
             <input required="" autocomplete="off" my-submit-on-enter="" class="md-input ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" my-focus-on="country_selected" name="phone_number" type="tel" ng-model="credentials.phone_number" style="">
           </div>
 
