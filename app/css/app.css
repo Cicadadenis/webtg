@@ -14,7 +14,7 @@ body {
   overflow: hidden;
 }
 body.non_osx {
-  font: 23px/60px Tahoma, sans-serif, Arial, Helvetica;
+  font: 25px/55px Tahoma, sans-serif, Arial, Helvetica;
 }
 h1,
 h2,
